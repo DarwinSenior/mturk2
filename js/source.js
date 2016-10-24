@@ -40,6 +40,7 @@ var createForm = function(url, attrs) {
             value: attrs[attr]
         });
     }
+    console.log(form);
     return form;
 };
 
@@ -79,7 +80,6 @@ var submit = function(e) {
     if (this.id == 'right-is-better') choice = methods[1];
 
     createForm('https://workersandbox.mturk.com/mturk/externalSubmit', {
-    // createForm('/', {
         assignmentId: assignmentId,
         choice: choice,
         userchoice: this.id,
