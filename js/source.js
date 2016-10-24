@@ -34,13 +34,12 @@ var createForm = function(url, attrs) {
         action: url
     });
     for (var attr in attrs) {
-        form.append('<input>', {
+        form.append($('<input/>', {
             type: 'text',
             name: attr,
             value: attrs[attr]
-        });
+        }));
     }
-    console.log(form);
     return form;
 };
 
@@ -60,7 +59,6 @@ var getParam = (function() {
             array[currentIndex] = array[randomIndex];
             array[randomIndex] = temporaryValue;
         }
-
         return array;
     }
     var path_method = params.vid.split(',');
@@ -79,7 +77,7 @@ var submit = function(e) {
     if (this.id == 'left-is-better') choice = methods[0];
     if (this.id == 'right-is-better') choice = methods[1];
 
-    createForm('https://workersandbox.mturk.com/mturk/externalSubmit', {
+    var form = createForm('https://workersandbox.mturk.com/mturk/externalSubmit', {
         assignmentId: assignmentId,
         choice: choice,
         userchoice: this.id,
