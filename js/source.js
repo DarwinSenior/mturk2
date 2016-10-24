@@ -62,9 +62,9 @@ var getParam = (function() {
 
         return array;
     }
-    params._parameters = $.parseJSON(params.vid);
-    params.path = params._parameters.path;
-    params.methods = shuffle(params._parameters.methods);
+    var path_method = params.vid.split(',');
+    params.path = path_method[0];
+    params.methods = shuffle([path_method[1], 'ours']);
     return function(e) {
         return params[e];
     };
